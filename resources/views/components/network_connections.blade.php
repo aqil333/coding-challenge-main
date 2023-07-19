@@ -267,7 +267,7 @@ $(document).ready(function() {
               <td class="align-middle"> 
             </table>
             <div>
-              <button class="btn btn-primary me-1 common-btn" data-user-id="${connection.pivot.connection_id}">Common Connection</button>
+              <button class="btn btn-primary me-1 common-btn" data-user-id="${connection.pivot.connection_id}">Common Connection(<span id="common_connections_count"></span>)</button>
               <button class="btn btn-danger me-1 remove-btn" data-user-id="${connection.pivot.connection_id}">Remove Connection</button>
             </div>
           </div>
@@ -310,7 +310,7 @@ $(document).ready(function() {
 
       function displayCommonConnections(commonConnections) {
     var content = '';
-console.log(commonConnections);
+    var count = commonConnections.length; 
     $.each(commonConnections, function(index, commonConnection) {
       content += `
         <div class="my-2 shadow text-white bg-dark p-1" id="connections_${commonConnection}">
@@ -326,6 +326,8 @@ console.log(commonConnections);
       `;
     });
     $('#common_connections_content').html(content);
+    $('#common_connections_count').text(count);
+
   }
   });
 });
